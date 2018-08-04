@@ -1,0 +1,21 @@
+---
+# tasks file for server
+- name: Update apt cache
+  apt_repository: repo="ppa:ondrej/php"
+  become: yes
+
+- name: Install required software
+  apt: pkg="{{ item }}" state=latest
+  become: yes
+  with_items:
+    - apache2
+    - mysql-server
+    - php7.2-mysql
+    - php7.2
+    - libapache2-mod-php7.2
+    - python-mysqldb
+    - python-dev
+    - libmysqlclient-dev
+    - python3-pip
+    - mysql-client
+    - python3-mysqldb
